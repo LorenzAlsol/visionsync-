@@ -89,7 +89,7 @@ class CameraAdapter:
         if self.source_type == SourceType.ONVIF:
             raw_source = self.source.replace("onvif://", "http://", 1)
 
-        cap = cv2.VideoCapture(raw_source)
+        cap = cv2.VideoCapture(raw_source, cv2.CAP_FFMPEG)
         if not cap.isOpened():
             logger.warning(f"[{self.camera_id}] Could not open source: {self.source}")
             return False
